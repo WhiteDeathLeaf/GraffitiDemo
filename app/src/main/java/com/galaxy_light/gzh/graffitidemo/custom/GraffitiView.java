@@ -190,7 +190,7 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
      * @param graffitiView 涂鸦控件
      * @return 是否保存成功
      */
-    public boolean saveBitmap(GraffitiView graffitiView) {
+    public String saveBitmap(GraffitiView graffitiView) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "graffiti" + File.separator + System.currentTimeMillis() + ".png";
             File file = new File(path);
@@ -198,9 +198,9 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
                 file.getParentFile().mkdir();
             }
             saveBitmapToAppointPath(graffitiView.convertBitmap(), path);
-            return true;
+            return path;
         }
-        return false;
+        return "保存失败";
     }
 
     /**

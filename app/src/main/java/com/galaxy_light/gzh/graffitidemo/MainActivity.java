@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.galaxy_light.gzh.graffitidemo.custom.GraffitiView;
 import com.galaxy_light.gzh.graffitidemo.style.BaseStyle;
@@ -55,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
                 graffitiView.reset();
                 break;
             case R.id.bt_save:
-                graffitiView.saveBitmap(graffitiView);
+                String path = graffitiView.saveBitmap(graffitiView);
+                if (path.equals("保存失败")) {
+                    Toast.makeText(this, "图片保存失败", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "图片保存成功/"+path, Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -133,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.iv_down:
                 currentSize--;
+                if (currentSize==0){
+                    currentSize=0;
+                }
                 tvSize.setText(String.valueOf(currentSize));
                 graffitiView.setSize(convertSize(currentSize));
                 break;
