@@ -18,7 +18,7 @@
             android:layout_height="match_parent" />
 
         <LinearLayout
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:orientation="horizontal">
@@ -46,7 +46,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/reset" />
+            <Button
+                android:id="@+id/bt_save"
+                style="?attr/buttonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/save" />
         </LinearLayout>
+
     </FrameLayout>
 
     <LinearLayout
@@ -137,61 +145,105 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bt_block"
-            style="?attr/buttonStyle"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/block" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/bt_curve"
-            style="?attr/buttonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/curve" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bt_line"
-            style="?attr/buttonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/line" />
+                <Button
+                    android:id="@+id/bt_curve"
+                    style="?attr/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/curve" />
 
-        <Button
-            android:id="@+id/bt_pane"
-            style="?attr/buttonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/pane" />
+                <Button
+                    android:id="@+id/bt_line"
+                    style="?attr/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/line" />
 
-        <Button
-            android:id="@+id/bt_point"
-            style="?attr/buttonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/point" />
+                <Button
+                    android:id="@+id/bt_round"
+                    style="?attr/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/round" />
 
-        <Button
-            android:id="@+id/bt_ring"
-            style="?attr/buttonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/ring" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/bt_round"
-            style="?attr/buttonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/round" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_block"
+                    style="?attr/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/block" />
+
+
+                <Button
+                    android:id="@+id/bt_pane"
+                    style="?attr/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/pane" />
+
+
+                <Button
+                    android:id="@+id/bt_ring"
+                    style="?attr/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ring" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_up"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/arrow_up_float" />
+
+            <TextView
+                android:id="@+id/tv_size"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/_5"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/iv_down"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/arrow_down_float" />
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

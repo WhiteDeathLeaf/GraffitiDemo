@@ -16,12 +16,10 @@ import com.galaxy_light.gzh.graffitidemo.style.BlockStyle;
 import com.galaxy_light.gzh.graffitidemo.style.CurveStyle;
 import com.galaxy_light.gzh.graffitidemo.style.LineStyle;
 import com.galaxy_light.gzh.graffitidemo.style.PaneStyle;
-import com.galaxy_light.gzh.graffitidemo.style.PointStyle;
 import com.galaxy_light.gzh.graffitidemo.style.RingStyle;
 import com.galaxy_light.gzh.graffitidemo.style.RoundStyle;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -123,9 +121,6 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
                 break;
             case Pane://方框
                 currentStyle = new PaneStyle(x, y, currentSize, currentColor);
-                break;
-            case Point://点
-                currentStyle = new PointStyle(x, y, currentColor);
                 break;
             case Ring://圆环
                 currentStyle = new RingStyle(x, y, currentSize, currentColor);
@@ -285,6 +280,6 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
      * 画笔样式
      */
     public enum StyleType {
-        Block, Curve, Line, Pane, Point, Ring, Round
+        Block, Curve, Line, Pane, Ring, Round
     }
 }

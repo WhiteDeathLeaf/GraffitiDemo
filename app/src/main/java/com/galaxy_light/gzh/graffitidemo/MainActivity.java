@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.galaxy_light.gzh.graffitidemo.custom.GraffitiView;
 import com.galaxy_light.gzh.graffitidemo.style.BaseStyle;
@@ -17,14 +18,17 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.graffitiView)
     GraffitiView graffitiView;
+    @BindView(R.id.tv_size)
+    TextView tvSize;
     private BaseStyle baseStyle;
+    private int currentSize = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        graffitiView.setSize(convertSize(5));
+        graffitiView.setSize(convertSize(currentSize));
     }
 
     public int convertSize(int size) {
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         return graffitiView.onTouchEvent(event);
     }
 
-    @OnClick({R.id.bt_revoke, R.id.bt_unRevoke, R.id.bt_reset})
+    @OnClick({R.id.bt_revoke, R.id.bt_unRevoke, R.id.bt_reset, R.id.bt_save})
     public void omAction(View view) {
         switch (view.getId()) {
             case R.id.bt_revoke:
@@ -45,9 +49,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.bt_unRevoke:
                 graffitiView.unRevoke(baseStyle);
+                baseStyle = null;
                 break;
             case R.id.bt_reset:
                 graffitiView.reset();
+                break;
+            case R.id.bt_save:
+                graffitiView.saveBitmap(graffitiView);
                 break;
         }
     }
@@ -91,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.bt_block, R.id.bt_curve, R.id.bt_line, R.id.bt_pane, R.id.bt_point, R.id.bt_ring, R.id.bt_round})
+    @OnClick({R.id.bt_block, R.id.bt_curve, R.id.bt_line, R.id.bt_pane, R.id.bt_ring, R.id.bt_round})
     public void onTypeChange(View view) {
         switch (view.getId()) {
             case R.id.bt_block:
@@ -106,14 +114,27 @@ public class MainActivity extends AppCompatActivity {
             case R.id.bt_pane:
                 graffitiView.setType(GraffitiView.StyleType.Pane);
                 break;
-            case R.id.bt_point:
-                graffitiView.setType(GraffitiView.StyleType.Point);
-                break;
             case R.id.bt_ring:
                 graffitiView.setType(GraffitiView.StyleType.Ring);
                 break;
             case R.id.bt_round:
                 graffitiView.setType(GraffitiView.StyleType.Round);
+                break;
+        }
+    }
+
+    @OnClick({R.id.iv_up, R.id.iv_down})
+    public void onSizeChange(View view) {
+        switch (view.getId()) {
+            case R.id.iv_up:
+                currentSize++;
+                tvSize.setText(String.valueOf(currentSize));
+                graffitiView.setSize(convertSize(currentSize));
+                break;
+            case R.id.iv_down:
+                currentSize--;
+                tvSize.setText(String.valueOf(currentSize));
+                graffitiView.setSize(convertSize(currentSize));
                 break;
         }
     }
