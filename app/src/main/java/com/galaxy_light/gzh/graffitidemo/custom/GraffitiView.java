@@ -41,6 +41,7 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
     private int currentSize = 5;//默认画笔宽度
     private SurfaceHolder surfaceHolder = getHolder();
     private Paint paint = new Paint(Color.WHITE);
+    private BaseStyle lastStyle;//最后一次画的样式
 
     public GraffitiView(Context context) {
         super(context);
@@ -229,9 +230,30 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
      *
      * @return 是否撤销成功
      */
-    public boolean revoke() {
+    public BaseStyle revoke() {
         if (baseStyles != null && baseStyles.size() > 0) {
+            lastStyle = baseStyles.get(baseStyles.size() - 1);
             baseStyles.remove(baseStyles.size() - 1);
+            Canvas canvas = surfaceHolder.lockCanvas();
+            canvas.drawColor(Color.WHITE);
+            for (BaseStyle baseStyle : baseStyles) {
+                baseStyle.draw(canvas);
+            }
+            surfaceHolder.unlockCanvasAndPost(canvas);
+            return lastStyle;
+        }
+        return null;
+    }
+
+    /**
+     * 解除撤销
+     *
+     * @param lastStyle 撤销的样式
+     * @return 是否解除撤销成功
+     */
+    public boolean unRevoke(BaseStyle lastStyle) {
+        if (lastStyle != null) {
+            baseStyles.add(lastStyle);
             Canvas canvas = surfaceHolder.lockCanvas();
             canvas.drawColor(Color.WHITE);
             for (BaseStyle baseStyle : baseStyles) {
