@@ -142,6 +142,7 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
     public void init() {
         surfaceHolder.addCallback(this);
         setFocusable(true);
+        paint.setColor(Color.WHITE);
         paint.setStrokeWidth(currentSize);
     }
 
@@ -283,7 +284,7 @@ public class GraffitiView extends SurfaceView implements SurfaceHolder.Callback 
     /**
      * 画笔样式
      */
-    private enum StyleType {
+    public enum StyleType {
         Block, Curve, Line, Pane, Point, Ring, Round
     }
 }

@@ -18,7 +18,7 @@ public class CurveStyle extends BaseStyle {
         size = 1;
     }
 
-    public CurveStyle(float x, float y, int color, int size) {
+    public CurveStyle(float x, float y, int size, int color) {
         super(color);
         path = new Path();
         this.size = size;
@@ -28,13 +28,15 @@ public class CurveStyle extends BaseStyle {
 
     @Override
     public void draw(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setColor(color);
         paint.setAntiAlias(true);
         paint.setDither(true);
         paint.setStrokeWidth(size);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawPath(path,paint);
+        canvas.drawPath(path, paint);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.galaxy_light.gzh.graffitidemo.style;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 
 /**
  * 点——样式
@@ -24,6 +25,8 @@ public class PointStyle extends BaseStyle{
 
     @Override
     public void draw(Canvas canvas) {
+        Paint paint=new Paint();
+        paint.setColor(color);
         canvas.drawPoint(x,y,paint);
     }
 

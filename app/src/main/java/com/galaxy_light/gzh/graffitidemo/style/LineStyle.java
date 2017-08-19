@@ -33,6 +33,8 @@ public class LineStyle extends BaseStyle {
 
     @Override
     public void draw(Canvas canvas) {
+        Paint paint=new Paint();
+        paint.setColor(color);
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(size);

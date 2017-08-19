@@ -2,7 +2,6 @@ package com.galaxy_light.gzh.graffitidemo.style;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 
 /**
  * 画笔样式基类
@@ -11,8 +10,6 @@ import android.graphics.Paint;
 
 public abstract class BaseStyle {
     public int color;//画笔颜色
-    public Paint paint=new Paint(color);
-
     public BaseStyle() {
         this.color = Color.BLACK;//默认黑色
     }

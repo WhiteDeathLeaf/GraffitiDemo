@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GraffitiDemo</string>
+    <string name="block">矩形</string>
+    <string name="curve">曲线</string>
+    <string name="line">直线</string>
+    <string name="pane">方框</string>
+    <string name="point">点</string>
+    <string name="ring">圆环</string>
+    <string name="round">圆</string>
+    <string name="revoke">撤销</string>
+    <string name="unRevoke">解除</string>
+    <string name="reset">重画</string>
 </resources>
